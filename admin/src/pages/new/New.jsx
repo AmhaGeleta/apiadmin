@@ -3,7 +3,7 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import { useState } from "react";
-import axios from "axios";
+import {axiosInstance} from "../../config";
 
 const New = ({ inputs, title }) => {
   const [file, setFile] = useState("");
@@ -19,7 +19,7 @@ const New = ({ inputs, title }) => {
     data.append("file", file);
     data.append("upload_preset", "upload");
     try {
-      const uploadRes = await axios.post(
+      const uploadRes = await axiosInstance.post(
         "https://api.cloudinary.com/v1_1/lamadev/image/upload",
         data
       );
@@ -31,7 +31,7 @@ const New = ({ inputs, title }) => {
         img: url,
       };
 
-      await axios.post("/auth/register", newUser);
+      await axiosInstance.post("/auth/register", newUser);
     } catch (err) {
       console.log(err);
     }

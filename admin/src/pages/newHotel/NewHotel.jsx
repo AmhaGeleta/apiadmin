@@ -5,7 +5,7 @@ import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUpload
 import { useState } from "react";
 import { hotelInputs } from "../../formSource";
 import useFetch from "../../hooks/useFetch";
-import axios from "axios";
+import {axiosInstance} from "../../config";
 
 const NewHotel = () => {
   const [files, setFiles] = useState("");
@@ -36,7 +36,7 @@ const NewHotel = () => {
           const data = new FormData();
           data.append("file", file);
           data.append("upload_preset", "upload");
-          const uploadRes = await axios.post(
+          const uploadRes = await axiosInstance.post(
             "https://api.cloudinary.com/v1_1/lamadev/image/upload",
             data
           );
@@ -52,7 +52,7 @@ const NewHotel = () => {
         photos: list,
       };
 
-      await axios.post("/hotels", newhotel);
+      await axiosInstance.post("/hotels", newhotel);
     } catch (err) {console.log(err)}
   };
   return (
