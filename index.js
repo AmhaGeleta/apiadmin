@@ -42,10 +42,10 @@ app.use('/api/hotels', hotelsRoute);
 app.use('/api/rooms', roomsRoute);
 
 // app.use(express.static(path.join(__dirname, '/client2/build/')));
-app.use(express.static(path.resolve(__dirname, './client2/build')));
+app.use(express.static(path.resolve(__dirname, './admin/build')));
 
 app.get('*', function (request, response) {
-  response.sendFile(path.resolve(__dirname, './client2/build', 'index.html'));
+  response.sendFile(path.resolve(__dirname, './admin/build', 'index.html'));
 });
 
 app.use((err, req, res, next) => {
