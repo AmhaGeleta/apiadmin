@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node index.js",
-    "heroku-postbuild": "cd client2 && npm install && npm run build"
+    "heroku-postbuild": "cd admin && npm install && npm run build"
   },
   "keywords": [],
   "author": "",
