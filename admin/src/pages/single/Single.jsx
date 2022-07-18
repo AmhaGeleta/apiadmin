@@ -13,9 +13,9 @@ const Single = () => {
   const path = location.pathname.split("/")[1];
   const id = location.pathname.split("/")[2];
 //  const f =  data.map(d => {if(d._id==id)return d});
-// console.log(id);
-  const { data, loading, error } = useFetch(`/${path}`);
-  console.log(data);
+console.log("path ", path);
+  const { data, loading, error } = useFetch(`https://eziladmin.herokuapp.com/api/${path}`);
+  console.log("data", data);
  const dat = data.filter(d => d._id==id);
  const firstElt = dat[0];
  console.log("first Element", data);
@@ -34,7 +34,7 @@ const Single = () => {
                 alt=""
                 className="itemImg"
               />
-              <div className="details">
+              {/* <div className="details">
                 <h1 className="itemTitle">{firstElt.username}</h1>
                 <div className="detailItem">
                   <span className="itemKey">Email:</span>
@@ -54,7 +54,7 @@ const Single = () => {
                   <span className="itemKey">Country:</span>
                   <span className="itemValue">USA</span>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
           <div className="right">
